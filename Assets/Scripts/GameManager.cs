@@ -6,20 +6,30 @@ using System.Threading.Tasks;
 using UnityEngine;
 namespace Jam {
     public class GameManager : MonoBehaviour {
+        public event Action HealthChanged;
         public static GameManager Instance { get; private set; }
-        public int Health { get; set; }
+        public int Health {
+            get => health;
+            set {
+                health = value;
+                HealthChanged?.Invoke();
+            }
+        }
         private Turret _selected;
         [SerializeField] private LineRenderer _shotPrefab;
+        private int health;
+
         private void Awake() {
             Instance = this;
             Turret.Clicked += Turret_Clicked;
+            StartGame();
         }
 
         private void Turret_Clicked(Turret obj) {
             if (_selected && _selected != obj) {
                 var shot = Instantiate(_shotPrefab);
                 shot.gameObject.SetActive(true);
-                shot.SetPositions(new Vector3[] { _selected.point.position,obj.point.position });
+                shot.SetPositions(new Vector3[] { _selected.point.position, obj.point.position });
                 Destroy(shot.gameObject, 0.2f);
                 var results = Physics.OverlapCapsule(_selected.point.position, obj.point.position, 0.3f);
                 foreach (var r in results) {
