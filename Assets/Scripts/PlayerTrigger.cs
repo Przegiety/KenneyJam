@@ -7,7 +7,6 @@ using UnityEngine;
 namespace Jam {
     public class PlayerTrigger : MonoBehaviour {
         public void TakeDamage(Unit unit) {
-            unit.gameObject.SetActive(false);
             GameManager.Instance.Health--;
             Debug.Log("damage");
         }
