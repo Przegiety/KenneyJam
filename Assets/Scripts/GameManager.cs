@@ -10,6 +10,7 @@ namespace Jam {
         public event Action Cleanup;
         public event Action HealthChanged;
         public event Action MoneyChanged;
+        public event Action ScoreChanged;
         public event Action<Turret> TurretSelected;
         public static GameManager Instance { get; private set; }
         private int _health;
@@ -32,6 +33,15 @@ namespace Jam {
                 MoneyChanged?.Invoke();
             }
         }
+        private int _score;
+        public int Score {
+            get => _score;
+            set {
+                _score = value;
+                ScoreChanged?.Invoke();
+            }
+        }
+        
         private Turret Selected {
             get => _selected;
             set {
@@ -61,8 +71,12 @@ namespace Jam {
                 var results = Physics.OverlapCapsule(Selected.point.position, obj.point.position, 0.3f);
                 foreach (var r in results) {
                     var u = r.GetComponent<Unit>();
-                    if (u)
+                    if (u) {
+                        if (u.Type == Unit.UnitType.Enemy) {
+                            Score++;
+                        }
                         u.Kill();
+                    }
                 }
                 Selected.Fire();
                 obj.Fire();
@@ -82,6 +96,7 @@ namespace Jam {
             OnStart.Invoke();
         }
         public void DoCleanup() {
+            Score = 0;
             Cleanup?.Invoke();
         }
         public void QuitGame() {

@@ -10,6 +10,7 @@ namespace Jam {
         private Rigidbody _rigidbody;
         private bool _isDead;
         [SerializeField] private UnitType _type;
+        public UnitType Type => _type;
         private void Awake() {
             _rigidbody = GetComponent<Rigidbody>();
         }
@@ -42,6 +43,11 @@ namespace Jam {
             if (_isDead)
                 return;
             _isDead = true;
+            var audio = GetComponent<AudioSource>();
+            if (audio) {
+                audio.pitch = Random.Range(0.5f, 1.02f);
+                audio.Play();
+            }
             StartCoroutine(KillCoroutine());
         }
         private IEnumerator KillCoroutine() {
