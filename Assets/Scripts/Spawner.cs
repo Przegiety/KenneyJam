@@ -12,7 +12,7 @@ namespace Jam {
         private float _timer = 1f;
         public void Spawn() {
             int pointIndex = Random.Range(0, _spawnPoints.Count);
-            var unit = _pool.FirstOrDefault(u => !u.gameObject.activeSelf);
+            var unit = _pool.Where(u => !u.gameObject.activeSelf).OrderBy(s=> Random.Range(0,100)).FirstOrDefault();
             if (!unit)
                 return;
             unit.transform.position = _spawnPoints[pointIndex].position;
