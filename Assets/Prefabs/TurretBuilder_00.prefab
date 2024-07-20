@@ -94,6 +94,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c80b3e85e8f650e43a3bbdfd6d4b36ae, type: 3}
+--- !u!1 &1205829148665231053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7327797336576160253, guid: c80b3e85e8f650e43a3bbdfd6d4b36ae, type: 3}
+  m_PrefabInstance: {fileID: 8433667475294144304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8425244461592280649 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 136828519662795129, guid: c80b3e85e8f650e43a3bbdfd6d4b36ae, type: 3}
@@ -147,6 +152,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c18ed96856590044682fc04405025b51, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4292a8c20852d294cb0934120c83495b, type: 2}
     - target: {fileID: 919132149155446097, guid: c18ed96856590044682fc04405025b51, type: 3}
       propertyPath: m_Name
       value: debris
@@ -154,8 +163,54 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c18ed96856590044682fc04405025b51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2560036670844603293}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c18ed96856590044682fc04405025b51, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7786249547309503728}
   m_SourcePrefab: {fileID: 100100000, guid: c18ed96856590044682fc04405025b51, type: 3}
+--- !u!1 &8250491414579749637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c18ed96856590044682fc04405025b51, type: 3}
+  m_PrefabInstance: {fileID: 9132961306148773460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2560036670844603293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8250491414579749637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57139e657a925c46b1410adf7c859f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _turret: {fileID: 1205829148665231053}
+  _debris: {fileID: 8250491414579749637}
+--- !u!65 &7786249547309503728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8250491414579749637}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &8733731566466890175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c18ed96856590044682fc04405025b51, type: 3}

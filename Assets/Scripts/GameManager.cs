@@ -7,6 +7,7 @@ namespace Jam {
         public static bool InGame;
         [SerializeField] private UnityEvent OnStart;
         [SerializeField] private UnityEvent OnDeath;
+        public event Action Cleanup;
         public event Action HealthChanged;
         public event Action MoneyChanged;
         public event Action<Turret> TurretSelected;
@@ -79,6 +80,9 @@ namespace Jam {
             Unit.GlobalSpeedMod = 1f;
             InGame = true;
             OnStart.Invoke();
+        }
+        public void DoCleanup() {
+            Cleanup?.Invoke();
         }
         public void QuitGame() {
             Application.Quit();
