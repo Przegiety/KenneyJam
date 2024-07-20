@@ -8,7 +8,6 @@ namespace Jam {
     public class PlayerTrigger : MonoBehaviour {
         public void TakeDamage(Unit unit) {
             GameManager.Instance.Health--;
-            Debug.Log("damage");
         }
     }
 }

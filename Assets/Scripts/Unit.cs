@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 namespace Jam {
     public class Unit : MonoBehaviour {
+        public static float GlobalSpeedMod = 1f;
         [SerializeField] private float _baseSpeed = 5f;
         [SerializeField] private int _baseHp = 100;
         private int _currentHp;
@@ -13,7 +14,7 @@ namespace Jam {
             _rigidbody = GetComponent<Rigidbody>();
         }
         private void Update() {
-            _rigidbody.linearVelocity = _baseSpeed * _direction;
+            _rigidbody.linearVelocity = GlobalSpeedMod * _baseSpeed * _direction;
         }
         private void OnEnable() {
             _currentHp = _baseHp;
@@ -32,6 +33,7 @@ namespace Jam {
                     GameManager.Instance.Health++;
                     break;
                 case UnitType.Money:
+                    GameManager.Instance.Money++;
                     break;
             }
             Kill();
