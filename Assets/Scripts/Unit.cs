@@ -32,9 +32,11 @@ namespace Jam {
                     break;
                 case UnitType.Heal:
                     GameManager.Instance.Health++;
+                    GameManager.Instance.Score++;
                     break;
                 case UnitType.Money:
                     GameManager.Instance.Money++;
+                    GameManager.Instance.Score++;
                     break;
             }
             Kill();

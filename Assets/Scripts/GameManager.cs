@@ -13,10 +13,14 @@ namespace Jam {
         public event Action ScoreChanged;
         public event Action<Turret> TurretSelected;
         public static GameManager Instance { get; private set; }
+        [SerializeField] private AudioSource _moneySound;
+        [SerializeField] private AudioSource _healSound;
         private int _health;
         public int Health {
             get => _health;
             set {
+                if (InGame && value > _health)
+                    _healSound.Play();
                 _health = value;
                 if (_health <= 0) {
                     InGame = false;
@@ -29,6 +33,8 @@ namespace Jam {
         public int Money {
             get => _money;
             set {
+                if (value > _money)
+                    _moneySound.Play();
                 _money = value;
                 MoneyChanged?.Invoke();
             }

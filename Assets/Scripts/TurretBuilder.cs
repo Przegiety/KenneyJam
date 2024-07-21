@@ -9,6 +9,7 @@ namespace Jam {
     public class TurretBuilder : MonoBehaviour {
         [SerializeField] private GameObject _turret;
         [SerializeField] private GameObject _debris;
+        [SerializeField] private AudioSource _audio;
         private Renderer[] _renderers;
         private MaterialPropertyBlock _block;
         private void OnMouseDown() {
@@ -16,6 +17,7 @@ namespace Jam {
                 _debris.SetActive(false);
                 _turret.SetActive(true);
                 GameManager.Instance.Money--;
+                _audio.Play();
             }
         }
         private void OnMouseEnter() {

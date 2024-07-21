@@ -23,7 +23,8 @@ namespace Jam {
             Clicked?.Invoke(this);
         }
         private void OnMouseEnter() {
-            SetHover(true);
+            if (GameManager.InGame)
+                SetHover(true);
         }
         private void OnMouseExit() {
             SetHover(false);
@@ -59,6 +60,8 @@ namespace Jam {
                 _block.SetFloat("_Selected", obj == this ? 1f : 0f);
                 r.SetPropertyBlock(_block);
             }
+            if (obj == this)
+                GetComponent<AudioSource>().Play();
         }
 
         private void SetUsed(bool value) {
